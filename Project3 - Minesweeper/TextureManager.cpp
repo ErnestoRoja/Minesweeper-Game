@@ -5,13 +5,21 @@ unordered_map<string, sf::Texture> TextureManager::textures;
 
 void TextureManager::LoadTexture(string fileName)
 {
-	string path = "images/";
+	string path = "images/";    // string path = imagesDirectory;
 	path += fileName + ".png";
 
 	textures[fileName].loadFromFile(path);
 }
 
-sf::Texture& GetTexture(string textureName)
+sf::Texture& TextureManager::GetTexture(string textureName)
 {
+	if (textures.find(textureName) == textures.end())
+		LoadTexture(textureName);
 
+	return textures[textureName];
+}
+
+void TextureManager::Clear()
+{
+	textures.clear(); // gets rid of all stored objects in map
 }
