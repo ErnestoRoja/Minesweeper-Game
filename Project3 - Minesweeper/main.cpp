@@ -1,4 +1,3 @@
-#include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
 #include <string>
@@ -7,7 +6,8 @@
 #include <algorithm>
 #include <sstream>
 #include "Random.h"
-#include "TextureManager.h"
+#include "Tile.h"
+#include "Board.h"
 using namespace std;
 
 vector<int> readData(const string& filename)
@@ -23,7 +23,7 @@ vector<int> readData(const string& filename)
 			unsigned int data = 0;
 			
 			stringstream inputString(line);
-			getline(inputString, tempNumber); // temp string columns
+			getline(inputString, tempNumber); // temp string for data
 			data = stoi(tempNumber);
 
 			configData.push_back(data);
@@ -36,15 +36,23 @@ vector<int> readData(const string& filename)
 int main()
 {
 	vector<int> config = readData("boards/config.cfg");
+	unsigned int COLUMNS = 0;
+	unsigned int ROWS = 0;
+	unsigned int MINES = 0;
 
 	for (unsigned int i = 0; i < config.size(); i++)
 	{
 		cout << config.at(i) << endl;
 	}
 
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+	COLUMNS = config[0];
+	ROWS = config[1];
+	MINES = config[2];
+
+	Board gameBoard(COLUMNS, ROWS);
+	Tile testTile;
+
+    sf::RenderWindow window(sf::VideoMode(1920, 1080), "Minesweeper");
 
     while (window.isOpen())
     {
@@ -56,7 +64,7 @@ int main()
         }
 
         window.clear();
-        window.draw(shape);
+		window.draw(gameBoard.drawBoard());
         window.display();
     }
 
