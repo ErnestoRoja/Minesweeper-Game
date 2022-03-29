@@ -12,6 +12,5 @@ class Board : private Tile
 public:
 	Board();
 	Board(unsigned int columns, unsigned int rows);
-	void drawBoard();
-	
+	void drawBoard(sf::RenderWindow& window);
 };

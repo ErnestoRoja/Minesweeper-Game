@@ -50,9 +50,8 @@ int main()
 	MINES = config[2];
 
 	Board gameBoard(COLUMNS, ROWS);
-	Tile testTile;
 
-    sf::RenderWindow window(sf::VideoMode(1920, 1080), "Minesweeper");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Minesweeper");
 
     while (window.isOpen())
     {
@@ -64,7 +63,7 @@ int main()
         }
 
         window.clear();
-		window.draw(gameBoard.drawBoard());
+		gameBoard.drawBoard(window);
         window.display();
     }
 

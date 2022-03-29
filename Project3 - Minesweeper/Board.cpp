@@ -14,26 +14,15 @@ Board::Board(unsigned int columns, unsigned int rows)
 	ROWS = rows;
 }
 
-void Board::drawBoard()
+void Board::drawBoard(sf::RenderWindow& window)
 {
-	
-	for (unsigned int i = 0; i <= COLUMNS; i++)
+	for (unsigned int i = 0; i < COLUMNS; i++)
 	{
-		vector<Tile> temp;
 		for (unsigned int j = 0; j < ROWS; j++)
 		{
-			board.push_back(temp);
+			sf::Vector2f position(1.2f * COLUMNS * i, 2.0f * ROWS * j);
+			sf::Sprite tile = drawTile(position);
+			window.draw(tile);
 		}
-	}
-
-
-	for (unsigned int i = 0; i < board.size(); i++)
-	{
-		for (unsigned int j = 0; j < board[i].size(); j++)
-		{
-			cout << board[i][j];
-		}
-		cout << endl;
 	}
 }
-
