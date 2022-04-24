@@ -1,5 +1,7 @@
 #pragma once
+#include "Random.h"
 #include <SFML/Graphics.hpp>
+#include <vector>
 #include <unordered_map>
 #include <string>
 using std::unordered_map;
