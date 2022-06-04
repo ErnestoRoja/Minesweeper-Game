@@ -4,7 +4,7 @@ The details of this project - as far as what features the game should contain - 
 ## A fully functional Minesweeper game created using C++ and the SFML library.
 ---
 ### What it looks like
-![Demo](minesweeper-demo.gif)
+![Demo](mine-demo.gif)
 
 ### This game has three states
 
